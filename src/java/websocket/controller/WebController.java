@@ -36,15 +36,19 @@ public class WebController {
 
     @RequestMapping(value = {"/check"}, params = {"user", "pass"}, method = RequestMethod.POST)
     public String check(ModelMap model, @RequestParam("user") String usern, @RequestParam("pass") String pass) {
-        User user = service.findUserById(usern);
-        if (user == null) {
-            model.addAttribute("ErrMsg", "Errore : nome utente non esistente");
-            return "login";
-        } else if (user.getPasswd().equals(pass)) {
-            model.addAttribute("username", usern);
-            return "index";
+        if (validate(usern) && validate(pass)) {
+            User user = service.findUserById(usern);
+            if (user == null) {
+                model.addAttribute("ErrMsg", "Error : username doesn't exist");
+                return "login";
+            } else if (user.getPasswd().equals(pass)) {
+                model.addAttribute("username", usern);
+                return "index";
+            } else {
+                model.addAttribute("ErrMsg", "Error : wrong password");
+            }
         } else {
-            model.addAttribute("ErrMsg", "Errore : password sbagliata");
+            model.addAttribute("ErrMsg", "Error : only alphanumeric characters and _ are allowed");
         }
         return "login";
 
@@ -52,16 +56,26 @@ public class WebController {
 
     @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
     public String add(ModelMap model, @ModelAttribute("user") User u) {
-        User user = service.findUserById(u.getUsername());
-        if (user == null) {
-            service.saveUser(u);
-            model.addAttribute("username", u.getUsername());
-            return "index";
+        if (validate(u.getUsername()) && validate(u.getPasswd())) {
+            User user = service.findUserById(u.getUsername());
+            if (user == null) {
+                service.saveUser(u);
+                model.addAttribute("username", u.getUsername());
+                return "index";
+            } else {
+                model.addAttribute("ErrMsg", "Error : user already registered");
+            }
+        } else {
+            model.addAttribute("ErrMsg", "Error : only alphanumeric characters and _ are allowed");
         }
-        model.addAttribute("ErrMsg", "Errore : nome utente gia` in uso");
         model.addAttribute("user", u);
         return "register";
 
+    }
+
+    private boolean validate(String input) {
+        String regex = "[a-zA-Z0-9]\\w*";
+        return input.matches(regex);
     }
 
 }
