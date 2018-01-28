@@ -1,0 +1,44 @@
+body {
+    background-color: #333 !important;
+    font-family: 'Ubuntu Mono', monospace !important;
+    text-decoration: none !important;
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top:50px;
+}
+
+.form-signin-heading {
+    color: white !important;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 18px;
+    height: auto;
+}
+
+.form-control {
+    margin-top: 8px;
+    color: white !important;
+    background-color: #242424 !important;
+    border-radius: 0px !important;
+}
+
+.btn {
+    background-color: #242424!important;
+    margin-top: 5px;
+    border-color: #ccc !important;
+    border-radius: 20px !important; 
+    -moz-border-radius: 20px !important;
+    -webkit-border-radius: 20px !important;
+}
+
+.button-group{
+    margin-top: 30px;
+}

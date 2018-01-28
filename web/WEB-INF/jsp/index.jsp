@@ -17,7 +17,7 @@
                 <div id="container" class="panel-body box"></div>
             </div>
             <div class="panel-footer">
-                <input id="messageInput" type="text" class="form-control">
+                <input id="messageInput" type="text" class="form-control" placeholder="Write your message here...">
             </div>
         </div>
     </body>

@@ -24,8 +24,7 @@ public class WebController {
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String login(ModelMap model) {
-        model.addAttribute("username", "user");
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)

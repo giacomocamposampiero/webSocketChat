@@ -17,6 +17,7 @@ function connect(username) {
         var objDiv = document.getElementById("container");
         objDiv.scrollTop = objDiv.scrollHeight;
     };
+    document.getElementById("messageInput").focus();
 }
 
 function disconnect() {
