@@ -1,28 +1,60 @@
 .message-bubble{
-    padding: 10px 0px 10px 00px;
+    padding-top: 15px;
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    font-family: 'Ubuntu Mono', monospace;
+    color: white;
+    font-size: 16px;
 }
 
-.message-bubble:nth-child(even) { background-color: #F5F5F5; margin-right: 15px; }
+.panel-default{
+    width:100% !important;
+    height:92% !important;
+    margin-bottom: 50px;
+    padding: 0px !important;
+    margin: 0px !important;
+    border: 0px solid transparent !important; 
+}   
 
-.message-bubble > *{
-    padding-left: 10px;
-    padding-right: -10px;
-}
-
-.panel-body { padding: 0px; }
-
-.panel-heading { background-color: #3d6da7 !important; color: white !important; }
-
-div.box
-{
-    width:100% !important;  width /**/:20%;
-    height:600px !important; height /**/: 200;
-    padding: 10px;
-    border:1px solid #EEE; border-right:0 solid;
+.box {
+    background-color: #333333;
+    padding-top: 0 !important;
+    width:100% !important;
+    height:100% !important;
+    border:0px solid;
     overflow-y: auto;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    border-style: none;
 }
 
-h1{
-    font: bold 12px/1.5 Georgia, "Times New Roman", serif;
+.panel-footer{
+    position:fixed;
+    left:0;
+    bottom: 0;
+    width:100%;
+    height: 8%;
+    padding: 5px !important;
+    background-color: #242424 !important;
+    border: 0px solid transparent !important; 
+}
+
+#messageInput{
+    height: 100%;
+    background-color: #242424 ;
+    border: 0px solid transparent; 
+}
+
+#messageInput:focus {
+    border:0px solid black;
+    box-shadow: 0 0 10px black;
+    color: white;
+}
+
+#main{         
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    border-style: none;
 }

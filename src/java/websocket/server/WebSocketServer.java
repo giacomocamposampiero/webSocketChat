@@ -40,7 +40,9 @@ public class  WebSocketServer  {
      */
     @OnMessage
     public void onMessage(String message, Session userSession) {
-        for (Session session : userSessions) session.getAsyncRemote().sendText(message);
+        for (Session session : userSessions){
+            if(session!=userSession) session.getAsyncRemote().sendText(message);
+        }
     }//onMessage
 
     @OnError

@@ -1,11 +1,5 @@
 package websocket.controller;
 
-import java.io.IOException;
-import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.tomcat.util.net.jsse.openssl.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -30,13 +24,14 @@ public class WebController {
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String login(ModelMap model) {
-        return "login";
+        model.addAttribute("username", "user");
+        return "index";
     }
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
     public String register(ModelMap model) {
-        User u= new User();
-        model.addAttribute("user",u);
+        User u = new User();
+        model.addAttribute("user", u);
         return "register";
     }
 
@@ -48,11 +43,11 @@ public class WebController {
             return "login";
         } else if (user.getPasswd().equals(pass)) {
             model.addAttribute("username", usern);
-            return "chat";
-        } else{
+            return "index";
+        } else {
             model.addAttribute("ErrMsg", "Errore : password sbagliata");
-            return "login";
         }
+        return "login";
 
     }
 
@@ -62,13 +57,12 @@ public class WebController {
         if (user == null) {
             service.saveUser(u);
             model.addAttribute("username", u.getUsername());
-            return "chat";
+            return "index";
         }
         model.addAttribute("ErrMsg", "Errore : nome utente gia` in uso");
-        model.addAttribute("user",u);
+        model.addAttribute("user", u);
         return "register";
 
     }
-    
 
 }
